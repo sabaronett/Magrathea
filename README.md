@@ -23,6 +23,86 @@ We encourage the community to contribute to and use MAGRATHEA for their interior
 <img width = "600" src="plot/funplanets.png"/>
  </p>
 
+---
+
+## 🐍 Python Package
+
+Magrathea now includes a **Python interface** for easy integration into your workflows, perfect for teaching and research!
+
+### Installation
+
+#### From PyPI (after release)
+```bash
+pip install magrathea
+```
+
+#### From Source (Development)
+```bash
+# Clone repository
+git clone https://github.com/Huang-CL/Magrathea.git
+cd Magrathea
+
+# Install GSL library (required)
+sudo apt install libgsl-dev  # Ubuntu/Debian
+# or
+brew install gsl  # macOS
+
+# Install Python package in development mode
+pip install -e .
+```
+
+### Quick Python Example
+
+```python
+import magrathea as mag
+
+# Create an Earth-like planet
+planet = mag.Planet()
+planet.add_layer('core', mass=0.33)
+planet.add_layer('mantle', mass=0.67)
+planet.surface_temp = 300
+
+# Solve for interior structure
+planet.solve()
+
+# Display results
+print(planet.results.summary())
+
+# Plot density profile
+planet.results.plot('mass', 'density')
+```
+
+### Jupyter Notebooks
+
+Example notebooks are available in the [`notebooks/`](notebooks/) directory:
+- **Basic Planet Structure**: Create and visualize planetary interiors
+- **Mass-Radius Relationships**: Explore how composition affects planet size
+- **Simple Examples**: Quick start guide with common use cases
+
+### Running Tests
+
+```bash
+# Install development dependencies
+pip install -e ".[dev]"
+
+# Run tests
+pytest tests/
+```
+
+### Google Colab
+
+After PyPI release, Magrathea can be used directly in Google Colab:
+```python
+!pip install magrathea
+import magrathea as mag
+```
+
+---
+
+## C++ Usage
+
+For users who prefer the command-line interface:
+
 ## Prerequisite ##
 
 [Install the GSL library](https://www.gnu.org/software/gsl/)(>= v2.0).  Download the compressed package from the [GNU ftp site](ftp://ftp.gnu.org/gnu/gsl/).  Extract the file and install the package following the instruction in the `INSTALL` file.  For the simplest case, 
