@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=64", "wheel", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "magrathea"
+version = "2.0.0"
+description = "Planet interior structure code with Python interface"
+readme = "README.md"
+authors = [
+    {name = "Chenliang Huang"},
+    {name = "David R. Rice"},
+    {name = "Jason H. Steffen"}
+]
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: C++",
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+keywords = ["astronomy", "planetary-science", "exoplanets", "interior-structure"]
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=1.20.0",
+    "matplotlib>=3.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "jupyter>=1.0.0",
+    "ipykernel>=6.0.0",
+]
+docs = [
+    "sphinx>=4.0.0",
+    "sphinx-rtd-theme>=1.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Huang-CL/Magrathea"
+Documentation = "https://magrathea.readthedocs.io"
+Repository = "https://github.com/Huang-CL/Magrathea"
+Issues = "https://github.com/Huang-CL/Magrathea/issues"
+
+[tool.setuptools]
+packages = ["magrathea"]
+package-dir = {"" = "python"}
+
+[tool.setuptools.package-data]
+magrathea = ["*.so", "*.dll", "*.dylib", "planet", "planet.exe"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["python/magrathea"]
+omit = ["*/tests/*", "*/test_*.py"]
