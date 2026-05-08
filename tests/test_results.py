@@ -39,7 +39,7 @@ def test_results_summary():
     summary = results.summary()
     assert 'MAGRATHEA' in summary
     assert '1.0000' in summary
-    assert 'Earth' in summary.lower()
+    assert 'earth' in summary.lower()  # Check for 'earth' in lowercase
 
 
 def test_load_results_file_not_found():
